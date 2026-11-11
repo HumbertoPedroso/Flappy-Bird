@@ -4,13 +4,13 @@ const ctx = canvas.getContext("2d");
 
 const gravidade = 0.35;
 const forcaPulo = -6;
-const larguraCano = 55;
-const espaco = 150;
+const larguraCano = 75;
+const espaco = 190;
 
 let passaro, canos, pontos, acabou, quadro;
 
 function reiniciar() {
-  passaro = { x: 80, y: 220, tamanho: 20, velocidade: 0 };
+  passaro = { x: 140, y: canvas.height / 2, tamanho: 25, velocidade: 0 };
   canos = [];
   pontos = 0;
   acabou = false;
@@ -42,12 +42,12 @@ function atualizar() {
 
   // Um novo par de canos a cada 100 quadros.
   if (quadro % 100 === 0) {
-    const altura = 60 + Math.random() * 190;
+    const altura = 70 + Math.random() * (canvas.height - espaco - 140);
     canos.push({ x: canvas.width, altura: altura, passou: false });
   }
 
   for (const cano of canos) {
-    cano.x -= 2;
+    cano.x -= 3.5;
 
     // Conta um ponto quando o pássaro ultrapassa o cano.
     if (!cano.passou && cano.x + larguraCano < passaro.x) {
@@ -94,10 +94,12 @@ function desenhar() {
   if (acabou) {
     ctx.fillStyle = "#d62828";
     ctx.font = "bold 36px Arial";
-    ctx.fillText("Game Over!", 90, 240);
+    ctx.textAlign = "center";
+    ctx.fillText("Game Over!", canvas.width / 2, canvas.height / 2);
     ctx.fillStyle = "#222";
     ctx.font = "18px Arial";
-    ctx.fillText("Espaço ou clique para reiniciar", 75, 275);
+    ctx.fillText("Espaço ou clique para reiniciar", canvas.width / 2, canvas.height / 2 + 35);
+    ctx.textAlign = "left";
   }
 }
 
