@@ -1,7 +1,6 @@
 // Flappy Bird simples: tudo é desenhado no canvas.
 const canvas = document.getElementById("jogo");
 const ctx = canvas.getContext("2d");
-const botao = document.getElementById("reiniciar");
 
 const gravidade = 0.35;
 const forcaPulo = -6;
@@ -33,7 +32,6 @@ document.addEventListener("keydown", function (evento) {
   }
 });
 canvas.addEventListener("pointerdown", pular);
-botao.addEventListener("click", reiniciar);
 
 function atualizar() {
   if (acabou) return;
