@@ -12,7 +12,9 @@ p { margin: 10px; }
 canvas {
   display: block;
   margin: 15px auto;
-  max-width: 95%;
+  width: 96%;
+  max-width: 1100px;
+  height: auto;
   background: #87ceeb;
   border: 3px solid #222;
 }
