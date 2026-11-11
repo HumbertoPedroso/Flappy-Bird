@@ -1,4 +1,3 @@
-// Flappy Bird simples: tudo é desenhado no canvas.
 const canvas = document.getElementById("jogo");
 const ctx = canvas.getContext("2d");
 
@@ -40,7 +39,6 @@ function atualizar() {
   passaro.velocidade += gravidade;
   passaro.y += passaro.velocidade;
 
-  // Um novo par de canos a cada 100 quadros.
   if (quadro % 100 === 0) {
     const altura = 70 + Math.random() * (canvas.height - espaco - 140);
     canos.push({ x: canvas.width, altura: altura, passou: false });
@@ -49,7 +47,6 @@ function atualizar() {
   for (const cano of canos) {
     cano.x -= 3.5;
 
-    // Conta um ponto quando o pássaro ultrapassa o cano.
     if (!cano.passou && cano.x + larguraCano < passaro.x) {
       pontos++;
       cano.passou = true;
@@ -74,7 +71,6 @@ function atualizar() {
 function desenhar() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  // Canos verdes
   ctx.fillStyle = "#2eaf37";
   for (const cano of canos) {
     ctx.fillRect(cano.x, 0, larguraCano, cano.altura);
@@ -82,11 +78,9 @@ function desenhar() {
       canvas.height - cano.altura - espaco);
   }
 
-  // Pássaro amarelo
-  ctx.fillStyle = "#ffd426";
+  ctx.fillStyle = "#ff0000ff";
   ctx.fillRect(passaro.x, passaro.y, passaro.tamanho, passaro.tamanho);
 
-  // Placar
   ctx.fillStyle = "#222";
   ctx.font = "bold 28px Arial";
   ctx.fillText("Pontos: " + pontos, 12, 35);
